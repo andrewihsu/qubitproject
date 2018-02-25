@@ -1,0 +1,198 @@
+import numpy as np
+from math import *
+from scipy import *
+probabilitylist1=[]
+probabilitylist2=[]
+#anglelist2 = []
+multiqubits = []
+def qubits():
+    xx1 = double(np.random.rand(1))
+    xx2 = double(np.random.rand(1))
+    xx3 = double(np.random.rand(1))
+    if xx1 < xx2 and xx1 < xx3:
+        xy1 = xx1
+        if xx2 < xx3:
+            xy2 = xx2
+            xy3 = xx3
+        else:
+            xy2 = xx3
+            xy3 = xx2
+    elif xx2 < xx1 and xx2 < xx3:
+        xy1 = xx2
+        if xx1 < xx3:
+            xy2 = xx1
+            xy3 = xx3
+        else:
+            xy2 = xx3
+            xy3 = xx1
+    else:
+        xy1 = xx3
+        if xx1 < xx2:
+            xy2 = xx1
+            xy3 = xx2
+        else:
+            xy2 = xx2
+            xy3 = xx1
+    
+    
+
+    x = np.random.rand(1)
+    print('the random number that will be evaluated into a state')
+    print(x)
+    xxxyyy1 = input("enter the real part of amplitute of 00 (a in the a+bi)")
+    xxxyyy1i = input("enter the imaginary part of amplitute of 00 (b in the a+bi)")
+    print('you entered')
+    print(xxxyyy1)
+    print (xxxyyy1i)
+    xxxyyy1 = double(xxxyyy1)
+    xxxyyy1i = double(xxxyyy1i)
+    print('resulting probability amplitute of 00)')
+    xy1=xxxyyy1*xxxyyy1+xxxyyy1i*xxxyyy1i
+    print(xy1)
+    
+    xxxyyy2 = input("enter the real part of amplitute of 01 (a in the a+bi)")
+    xxxyyy2i = input("enter the imaginary part of amplitute of 01 (b in the a+bi)")
+    print('you entered')
+    print(xxxyyy2)
+    print (xxxyyy2i)
+    xxxyyy2 = double(xxxyyy2)
+    xxxyyy2i = double(xxxyyy2i)
+    print('resulting probability amplitute of 01)')
+    xy2=xxxyyy2*xxxyyy2+xxxyyy2i*xxxyyy2i
+    print(xy2)
+    
+    xxxyyy3 = input("enter the real part of amplitute of 10 (a in the a+bi)")
+    xxxyyy3i = input("enter the imaginary part of amplitute of 10 (b in the a+bi)")
+    print('you entered')
+    print(xxxyyy3)
+    print (xxxyyy3i)
+    xxxyyy3 = double(xxxyyy3)
+    xxxyyy3i = double(xxxyyy3i)
+    print('resulting probability amplitute of 10)')
+    xy3=xxxyyy3*xxxyyy3+xxxyyy3i*xxxyyy3i
+    print(xy3)
+    
+    xxxyyy4 = input("enter the real part of amplitute of 11 (a in the a+bi)")
+    xxxyyy4i = input("enter the imaginary part of amplitute of 11 (b in the a+bi)")
+    print('you entered')
+    print(xxxyyy4)
+    print (xxxyyy4i)
+    xxxyyy4 = double(xxxyyy4)
+    xxxyyy4i = double(xxxyyy4i)
+    print('resulting probability amplitute of 11)')
+    xy4=xxxyyy4*xxxyyy4+xxxyyy4i*xxxyyy4i
+    print(xy4)
+    
+    normalizationconstant = 1/(xy1+xy2+xy3+xy4)
+    xy1 = xy1*normalizationconstant
+    xy2 = xy2*normalizationconstant
+    xy3 = xy3*normalizationconstant
+    xy4 = xy4*normalizationconstant
+    
+    print('probability of 00')
+    print(xy1)
+    print('probability of 01')
+    print(xy2)
+    print('probability of 10')
+    print(xy3)
+    print('probability of 11')
+    print(xy4)
+    
+    y = 33
+
+    if x < xy1:
+        y = '00'
+    elif x < (xy1+xy2):
+        y = '01'
+    elif x < (xy1+xy2+xy3):
+        y = '10'
+    elif x < 1:
+        y = '11'
+    print('resulting state of the qubit')
+    print(y)
+    multiqubits.append(y)
+    probabilitylist1.append(xy1)
+    probabilitylist1.append(xy1+xy2)
+    probabilitylist1.append(xy1+xy2+xy3)
+
+    print ('all of the qubit states')
+    print (multiqubits)
+    #print ('list of ')
+    #print (probabilitylist)
+    
+def simplequbits():
+    xx1 = double(np.random.rand(1))
+    #xx2 = double(np.random.rand(1)*90)
+    
+        
+    
+    xy1 = xx1
+    #xy2 = xx2
+
+    x = np.random.rand(1)
+    print('the random number that will be evaluated into a state')
+    print(x)
+    xxxyyy1 = input("enter the real part (0 to 7)of amplitute of 0 (a in the a+bi)")
+    xxxyyyi = input("enter the imaginary part of (0 to 7) amplitute of 0 (b in the a+bi)")
+    print('you entered')
+    print(xxxyyy1)
+    print (xxxyyyi)
+    xxxyyy1 = double(xxxyyy1)
+    xxxyyyi = double(xxxyyyi)
+    print('resulting probability of 0)')
+    xy1=xxxyyy1*xxxyyy1+xxxyyyi*xxxyyyi
+    print(xy1/100)
+    xy1 = xy1/100
+    #print('the random generated angle')
+    #print(xy2)
+    
+    y = 33
+
+    if x < xy1:
+        y = '0'
+    elif x < 1:
+        y = '1'
+    print('resulting state of the qubit')
+    print(y)
+    multiqubits.append(y)
+    probabilitylist2.append(xy1)
+    #anglelist2.append(xy2)
+    print ('all of the qubit states')
+    print (multiqubits)
+    #print ('list of ')
+    #print (probabilitylist)
+
+qubits()
+qubits()
+simplequbits()
+simplequbits()
+def tensorforthree(array):
+    newtensor = []
+    newtensor.append(array[0]*array[3])
+    newtensor.append(array[0]*array[4])
+    newtensor.append(array[0]*array[5])
+    newtensor.append(array[1]*array[3])
+    newtensor.append(array[1]*array[4])
+    newtensor.append(array[1]*array[5])
+    newtensor.append(array[2]*array[3])
+    newtensor.append(array[2]*array[4])
+    newtensor.append(array[2]*array[5])
+    print('resulting tensor product is:')
+    print(newtensor)
+    return newtensor
+def tensorone(array):
+    newtensors = []
+    #newangle = (angle/180)*pi
+    newtensors.append(array[0]*array[1])
+    print('resulting tensor product:')
+    return newtensors
+print('----------------------------------------------')
+print('---result of the tensor product of the two qubits---')
+print ('given two (three probability cutoffs) from above')
+print(probabilitylist1)
+tensorforthree(probabilitylist1)
+
+print('given the two probablity (from above) of being 0')
+print(probabilitylist2)
+#tensorone(probabilitylist2,(abs(anglelist2[1]-anglelist2[0])))
+tensorone(probabilitylist2)
