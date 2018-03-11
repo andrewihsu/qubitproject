@@ -110,7 +110,18 @@ def qubits():
         y = '11'
     print('resulting state of the qubit')
     print(y)
+    
+    
+    decide = input('would you like to apply the quantum c gate 1 for yes 2 for no')
+    if decide == '1':
+        if y == '10':
+            y = '11'
+        elif y == '11':
+            y = '10'
+        print('state of qubit after c gate')
+        print(y)
     multiqubits.append(y)
+    
     probabilitylist1.append(xy1)
     probabilitylist1.append(xy1+xy2)
     probabilitylist1.append(xy1+xy2+xy3)
